@@ -27,3 +27,73 @@ Input
 5964 9984
 Output
 -1
+
+
+CODE:
+
+#include <stdio.h>
+#include <string.h>
+int j=0,arr[100];
+void swap(char *x, char *y)
+{ char temp;
+temp = *x;
+*x = *y;
+*y = temp;
+}
+void smallest(int *array,int size)
+{
+int c;
+int minimum = array[0];
+for (c = 1; c < size; c++)
+{
+if (array[c] < minimum)
+{
+minimum = array[c];
+}
+}
+printf("%d ",minimum);
+}
+void permute(char *a, int l, int r,int alt)
+{
+int i;
+int p;
+if (l == r)
+{
+p=atoi(a);
+if(p>alt)
+{
+arr[j]=p;
+j++;
+}
+}
+else
+{
+for (i = l; i <= r; i++)
+{
+swap((a+l), (a+i));
+permute(a, l+1, r,alt);
+swap((a+l), (a+i));
+
+}
+}
+}
+int main()
+{
+int alt;
+printf("A: ");
+char str[10];
+scanf("%s",str);
+printf("B: ");
+scanf("%d",&alt);
+int n = strlen(str);
+permute(str, 0, n-1,alt);
+if (j==0)
+{
+printf("-1");
+}
+else
+smallest(arr,j);
+return 0;
+}
+
+
